@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "site": {
+    "name": "VSR Fintech Sol",
+    "tagline": "Get Instant Loans with Minimum Documentation",
+    "description": "Fast Approval | Low Interest | Trusted Financial Guidance",
+    "url": "https://vsrfintechsol.com"
+  },
+  "company": {
+    "managingDirector": "Sukanya Vadagandla",
+    "qualification": "B.Ed, MBA",
+    "phone": "+91 9391300146",
+    "phoneRaw": "919391300146",
+    "email": ""
+  },
+  "whatsapp": {
+    "number": "919391300146",
+    "defaultMessage": "Hi I want to apply for a loan",
+    "url": "https://wa.me/919391300146?text=Hi%20I%20want%20to%20apply%20for%20a%20loan"
+  },
+  "seo": {
+    "title": "VSR Fintech Sol - Instant Loans with Expert Guidance",
+    "description": "Get instant home, personal, business, and education loans with minimum documentation. Low CIBIL score? We can help. Contact Sukanya Vadagandla today.",
+    "keywords": "home loan, personal loan, business loan, education loan, low CIBIL score, loan against property, NRI services, insurance"
+  },
+  "features": {
+    "videoSection": true,
+    "testimonials": false,
+    "blog": false
+  },
+  "theme": {
+    "primaryBlue": "#0f2d5a",
+    "secondaryBlue": "#1e4d8c",
+    "primaryGreen": "#16a34a",
+    "lightGreen": "#dcfce7",
+    "accent": "#f59e0b"
+  }
+}

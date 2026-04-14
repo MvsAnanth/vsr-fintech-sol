@@ -1,0 +1,14 @@
+# Netlify deployment config for VSR Fintech Sol
+# Docs: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command   = "npm run build"
+  publish   = "out"          # Static export output folder
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[[redirects]]
+  from   = "/*"
+  to     = "/index.html"
+  status = 200

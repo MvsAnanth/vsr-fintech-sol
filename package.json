@@ -1,12 +1,14 @@
 {
-  "name": "vsr_fintech_sol",
-  "version": "0.1.0",
+  "name": "vsr-fintech-sol",
+  "version": "1.0.0",
   "private": true,
+  "description": "VSR Fintech Sol - Financial Services Website",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 5001",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
+    "start": "next start -p 5001",
+    "lint": "eslint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "next": "16.2.3",
