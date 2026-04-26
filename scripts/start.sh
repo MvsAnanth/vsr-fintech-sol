@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# VSR Fintech Sol - Start Script
+# VSR Fintech Solutions - Start Script
 # Version: 1.0.0
 # Usage: ./scripts/start.sh [dev|prod]
 
@@ -10,7 +10,7 @@ MODE=${1:-dev}
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 echo "======================================"
-echo "  VSR Fintech Sol - Starting Server"
+echo "  VSR Fintech Solutions - Starting Server"
 echo "======================================"
 echo "  Mode: $MODE"
 echo "  Directory: $PROJECT_DIR"

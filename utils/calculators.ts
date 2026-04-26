@@ -1,6 +1,6 @@
 /**
  * Financial Calculator Utilities
- * VSR Fintech Sol - v1.0.0
+ * VSR Fintech Solutions - v1.0.0
  */
 
 export interface EMIResult {

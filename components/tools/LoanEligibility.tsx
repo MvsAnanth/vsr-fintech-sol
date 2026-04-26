@@ -20,9 +20,9 @@ Estimated Loan ≈ ₹10–12 Lakhs (at 10% for 60 months)`;
 
 export default function LoanEligibility() {
   const [values, setValues] = useState({
-    income: "",
-    existingEMI: "",
-    rate: "",
+    income: "80000",
+    existingEMI: "12000",
+    rate: "9.5",
   });
 
   const handleChange = useCallback(
@@ -49,15 +49,20 @@ export default function LoanEligibility() {
       : 0;
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Inputs */}
-      <div className="space-y-5">
+    <div className="space-y-8">
+      <div className="border-b border-gray-100 pb-4 mb-6">
+        <h3 className="text-2xl font-bold text-brand-navy">Loan Eligibility Calculator</h3>
+        <p className="text-gray-500 font-medium text-sm mt-1">Check how much loan you can comfortably afford.</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        {/* Inputs Section */}
+        <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
-            Monthly Income (₹)
+          <label className="block text-sm font-medium text-brand-navy mb-2">
+            Monthly Net Income (₹)
           </label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-light">
               ₹
             </span>
             <input
@@ -66,23 +71,25 @@ export default function LoanEligibility() {
               value={values.income}
               onChange={handleChange}
               placeholder="e.g. 50000"
-              className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+              className="w-full pl-10 pr-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
               inputMode="decimal"
             />
           </div>
           {income > 0 && (
-            <p className="text-xs text-gray-400 mt-1">
-              Max EMI budget (50%): {formatINR(maxEMIBudget)}
-            </p>
+            <div className="flex justify-between items-center mt-2">
+              <p className="text-xs font-medium text-brand-blue">
+                Max EMI budget (50%): {formatINR(maxEMIBudget)}
+              </p>
+            </div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-brand-navy mb-2">
             Existing EMIs per Month (₹)
           </label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-light">
               ₹
             </span>
             <input
@@ -91,14 +98,14 @@ export default function LoanEligibility() {
               value={values.existingEMI}
               onChange={handleChange}
               placeholder="0 if none"
-              className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+              className="w-full pl-10 pr-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
               inputMode="decimal"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-brand-navy mb-2">
             Expected Interest Rate (%)
           </label>
           <div className="relative">
@@ -107,11 +114,11 @@ export default function LoanEligibility() {
               name="rate"
               value={values.rate}
               onChange={handleChange}
-              placeholder="e.g. 10"
-              className="w-full pl-4 pr-8 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+              placeholder="e.g. 10.5"
+              className="w-full pl-4 pr-10 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
               inputMode="decimal"
             />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-light">
               %
             </span>
           </div>
@@ -119,28 +126,28 @@ export default function LoanEligibility() {
 
         {/* EMI Burden Indicator */}
         {income > 0 && (
-          <div>
-            <div className="flex justify-between text-xs text-gray-500 mb-1">
+          <div className="pt-2">
+            <div className="flex justify-between text-xs font-medium text-brand-navy mb-2">
               <span>Current EMI Burden</span>
               <span
                 className={
                   Number(utilizationPercent) > 50
-                    ? "text-red-500 font-semibold"
-                    : "text-green-600 font-semibold"
+                    ? "text-[#f87171] font-bold"
+                    : "text-[#1b5e20] font-bold"
                 }
               >
-                {utilizationPercent}%
+                {utilizationPercent}% of budget
               </span>
             </div>
-            <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
+            <div className="w-full h-3 bg-gray-200 rounded-full flex overflow-hidden">
               <div
                 className={`h-full transition-all duration-500 ${
-                  Number(utilizationPercent) > 50 ? "bg-red-500" : "bg-green-500"
+                  Number(utilizationPercent) > 50 ? "bg-[#f87171]" : "bg-[#4ade80]"
                 }`}
                 style={{ width: `${Math.min(Number(utilizationPercent), 100)}%` }}
               />
             </div>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-500 mt-2">
               {Number(utilizationPercent) > 50
                 ? "High EMI burden — may affect eligibility"
                 : "Healthy EMI-to-income ratio"}
@@ -149,97 +156,92 @@ export default function LoanEligibility() {
         )}
 
         {/* Formula Help */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pt-4">
           <Tooltip content={ELIGIBILITY_FORMULA}>
-            <button className="flex items-center gap-1.5 text-blue-600 text-sm hover:text-blue-800 transition-colors">
-              <span className="text-base">ℹ️</span>
+            <button className="flex items-center gap-1.5 text-[#1b5e20] font-medium text-sm hover:underline">
+              <span className="text-xs bg-[#1b5e20] text-white rounded-full w-4 h-4 flex items-center justify-center">ℹ</span>
               How is eligibility calculated?
             </button>
           </Tooltip>
         </div>
       </div>
 
-      {/* Results */}
-      <div>
+      {/* Results Section - Navy Split */}
+      <div className="h-full">
         {hasResult && result.eligibleEMI > 0 ? (
-          <div className="space-y-4">
-            <div className="bg-gradient-to-br from-green-600 to-green-700 rounded-2xl p-6 text-center text-white">
-              <p className="text-green-100 text-sm mb-1">
+          <div className="bg-brand-navy rounded-2xl p-8 text-white shadow-[var(--shadow-solid-sm)] h-full flex flex-col">
+            
+            <div className="mb-8 text-center sm:text-left">
+              <p className="text-[#4ade80] font-medium text-sm mb-1 uppercase tracking-wider">
                 Estimated Loan Eligibility
               </p>
-              <p className="text-4xl font-bold text-white">
+              <p className="text-4xl md:text-5xl font-bold text-white mb-2">
                 {formatINRLabel(result.estimatedLoanAmount)}
               </p>
-              <p className="text-green-200 text-xs mt-2">
-                approximate (varies by bank & profile)
+              <p className="text-gray-400 text-xs">
+                Approximate amount (varies by bank & profile)
               </p>
             </div>
 
-            <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 flex justify-between items-center">
-              <div>
-                <p className="text-xs text-blue-600 font-medium">
+            <div className="bg-white/10 rounded-xl p-5 mb-8">
+              <div className="flex justify-between items-center mb-1">
+                <p className="text-sm font-medium text-white">
                   Monthly EMI Capacity
                 </p>
-                <p className="text-xs text-gray-500">
-                  After existing EMIs
+                <p className="text-xl font-bold text-[#4ade80]">
+                  {formatINR(result.eligibleEMI)}
                 </p>
               </div>
-              <p className="text-lg font-bold text-blue-700">
-                {formatINR(result.eligibleEMI)}
+              <p className="text-xs text-gray-400">
+                After deducting existing EMIs
               </p>
             </div>
 
-            <div className="bg-gray-50 border border-gray-100 rounded-xl p-4">
-              <p className="text-xs text-gray-500 mb-3">Calculation Breakdown</p>
-              <div className="space-y-2">
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">50% of Income</span>
-                  <span className="font-medium">{formatINR(maxEMIBudget)}</span>
-                </div>
-                <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">Minus Existing EMIs</span>
-                  <span className="font-medium text-red-500">
-                    −{formatINR(existingEMI)}
-                  </span>
-                </div>
-                <div className="border-t pt-2 flex justify-between text-sm font-bold">
-                  <span>Eligible EMI</span>
-                  <span className="text-green-600">
-                    {formatINR(result.eligibleEMI)}
-                  </span>
-                </div>
+            <div className="space-y-4 mb-8">
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-wider">Calculation Breakdown</p>
+              <div className="flex justify-between text-sm text-gray-300">
+                <span>50% of Income (Budget)</span>
+                <span className="font-medium text-white">{formatINR(maxEMIBudget)}</span>
+              </div>
+              <div className="flex justify-between text-sm text-gray-300">
+                <span>Minus Existing EMIs</span>
+                <span className="font-medium text-[#f87171]">
+                  −{formatINR(existingEMI)}
+                </span>
               </div>
             </div>
 
-            <div className="bg-amber-50 border border-amber-100 rounded-xl p-3 flex gap-2">
-              <span className="text-amber-500 text-base flex-shrink-0">💡</span>
-              <p className="text-xs text-amber-700">
+            <div className="mt-auto bg-[#fff3cd] text-[#856404] rounded-xl p-4 flex gap-3 items-start">
+              <span className="text-lg leading-none">💡</span>
+              <p className="text-xs font-medium leading-relaxed">
                 This is an estimate. Actual eligibility depends on CIBIL score,
                 employment type, and bank policies. Contact us for an accurate
                 assessment.
               </p>
             </div>
+            
           </div>
         ) : hasResult && result.eligibleEMI <= 0 ? (
-          <div className="h-full flex flex-col items-center justify-center text-center py-12 bg-red-50 rounded-2xl border border-red-100">
-            <span className="text-4xl mb-3">⚠️</span>
-            <p className="text-red-600 font-semibold text-sm mb-2">
+          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-red-50 rounded-2xl border-2 border-dashed border-red-200 text-[#b71c1c]">
+            <span className="text-5xl mb-4 opacity-80">⚠</span>
+            <p className="font-bold text-lg mb-2">
               EMI Burden Too High
             </p>
-            <p className="text-red-400 text-xs px-4">
+            <p className="text-sm">
               Your existing EMIs exceed 50% of income. Contact us to explore
               debt consolidation options.
             </p>
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center text-center py-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
-            <span className="text-4xl mb-3">📊</span>
-            <p className="text-gray-500 text-sm">
+          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300">
+            <span className="text-5xl mb-4 grayscale opacity-50">📊</span>
+            <p className="text-brand-navy font-medium">
               Enter your income details to check eligibility
             </p>
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

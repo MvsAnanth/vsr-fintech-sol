@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# VSR Fintech Sol - Stop Script
+# VSR Fintech Solutions - Stop Script
 # Version: 1.0.0
 
 echo "======================================"
-echo "  VSR Fintech Sol - Stopping Server"
+echo "  VSR Fintech Solutions - Stopping Server"
 echo "======================================"
 
 # Kill Next.js dev server

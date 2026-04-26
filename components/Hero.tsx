@@ -1,6 +1,8 @@
 "use client";
 
+import { motion } from "framer-motion";
 import config from "@/config.json";
+import { ArrowRight, Briefcase, Home, TrendingUp, PhoneCall } from "lucide-react";
 
 const stats = [
   { value: "500+", label: "Happy Clients" },
@@ -16,170 +18,134 @@ export default function Hero() {
   };
 
   return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
-      style={{
-        background: "linear-gradient(135deg, #0f2d5a 0%, #1e4d8c 50%, #0f4c35 100%)",
-      }}
-    >
-      {/* Background decorative circles */}
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-green-500/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-blue-600/5 blur-3xl pointer-events-none" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+    <section id="home" className="pt-32 pb-20 overflow-hidden relative bg-brand-bg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div>
+          
+          {/* Left Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             {/* Trust badge */}
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-green-300 text-sm font-medium">
-                Trusted by 500+ clients across India
+            <div className="inline-flex items-center gap-2 bg-white border-2 border-brand-navy px-4 py-2 mb-6 shadow-[var(--shadow-solid-sm)]">
+              <span className="w-3 h-3 rounded-none bg-green-500 border border-brand-navy animate-pulse" />
+              <span className="text-brand-navy text-sm font-bold uppercase tracking-wider">
+                Trusted by 500+ clients
               </span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
-              Get{" "}
-              <span className="text-green-400">Instant Loans</span>
-              <br />
-              with Minimum
-              <br />
-              Documentation
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-brand-navy leading-tight mb-6">
+              Instant <span className="text-brand-blue">Loans</span> <br />
+              Zero Hassle.
             </h1>
-
-            <p className="text-blue-200 text-lg mb-6 leading-relaxed">
-              Fast Approval &bull; Low Interest &bull; Trusted Financial
-              Guidance
+            <p className="text-xl text-brand-text-light mb-8 max-w-lg font-medium">
+              {config.seo.description}. Fast Approval. Low Interest. Trusted Guidance.
             </p>
-
-            {/* Highlight Banner */}
-            <div className="flex items-start gap-3 bg-amber-400/10 border border-amber-400/30 rounded-xl px-4 py-3 mb-8">
-              <span className="text-amber-400 text-xl">⚡</span>
-              <p className="text-amber-200 text-sm font-medium">
-                <span className="text-amber-400 font-bold">
-                  Low CIBIL score?
-                </span>{" "}
-                Still get a loan with our expert guidance — we work with all
-                credit profiles.
-              </p>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
-              <button
+            
+            <div className="flex flex-wrap gap-4 mb-10">
+              <motion.button
                 onClick={scrollToContact}
-                className="bg-green-500 hover:bg-green-400 text-white font-semibold px-8 py-4 rounded-xl transition-all transform hover:scale-105 shadow-lg shadow-green-500/30 text-base"
+                whileHover={{ y: -4, boxShadow: "var(--shadow-solid-md)" }}
+                whileTap={{ y: 0, boxShadow: "none" }}
+                className="bg-brand-blue text-white px-8 py-4 font-bold text-lg transition-transform shadow-[var(--shadow-solid-sm)] border-2 border-brand-navy flex items-center gap-2"
               >
-                Apply Now — It&apos;s Free
-              </button>
-              <a
+                Apply Now <ArrowRight className="w-5 h-5" />
+              </motion.button>
+              <motion.a
                 href={config.whatsapp.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-8 py-4 rounded-xl transition-all backdrop-blur-sm text-base"
+                whileHover={{ y: -4, boxShadow: "var(--shadow-solid-md)" }}
+                whileTap={{ y: 0, boxShadow: "none" }}
+                className="bg-white text-brand-navy px-8 py-4 font-bold text-lg transition-transform shadow-[var(--shadow-solid-sm)] border-2 border-brand-navy"
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                </svg>
-                WhatsApp Now
-              </a>
+                WhatsApp Us
+              </motion.a>
             </div>
 
-            {/* MD Info */}
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-green-400 flex items-center justify-center text-white font-bold text-lg">
-                S
-              </div>
-              <div>
-                <p className="text-white font-semibold text-sm">
-                  {config.company.managingDirector}
-                </p>
-                <p className="text-blue-300 text-xs">
-                  Managing Director &bull; {config.company.qualification}
-                </p>
-              </div>
+            {/* Quick Contact Inline */}
+            <div className="flex items-center gap-4 bg-white border-2 border-brand-navy p-4 shadow-[var(--shadow-solid-sm)] max-w-md">
+               <div className="bg-brand-blue p-2 border-2 border-brand-navy">
+                 <PhoneCall className="w-6 h-6 text-white" />
+               </div>
+               <div>
+                 <p className="text-xs font-bold text-brand-text-light uppercase tracking-wider">Call for Guidance</p>
+                 <a href={`tel:${config.company.phone}`} className="text-lg font-bold text-brand-navy hover:text-brand-blue">
+                   {config.company.phone}
+                 </a>
+               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Content — Stats Cards */}
-          <div className="hidden lg:grid grid-cols-2 gap-4">
-            {stats.map((stat) => (
-              <div
-                key={stat.label}
-                className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 text-center hover:bg-white/15 transition-colors"
-              >
-                <p className="text-4xl font-bold text-green-400 mb-1">
-                  {stat.value}
-                </p>
-                <p className="text-blue-200 text-sm">{stat.label}</p>
-              </div>
-            ))}
-
-            {/* Quick contact card */}
-            <div className="col-span-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-green-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-              </div>
-              <div>
-                <p className="text-blue-300 text-xs mb-1">Call / WhatsApp</p>
-                <a
-                  href={`tel:${config.company.phone}`}
-                  className="text-white font-semibold hover:text-green-400 transition-colors"
-                >
-                  {config.company.phone}
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Stats */}
-        <div className="grid grid-cols-2 gap-3 mt-10 lg:hidden">
-          {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl p-4 text-center"
-            >
-              <p className="text-2xl font-bold text-green-400">{stat.value}</p>
-              <p className="text-blue-200 text-xs mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="flex justify-center mt-12 animate-bounce">
-          <svg
-            className="w-6 h-6 text-blue-300"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
+          {/* Right 3D Solid Elements */}
+          <div className="relative h-[600px] hidden lg:block">
+            {/* Base platform */}
+            <motion.div
+              initial={{ opacity: 0, rotateX: 60, rotateZ: -45, y: 100 }}
+              animate={{ opacity: 1, rotateX: 60, rotateZ: -45, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-brand-border border-4 border-brand-navy shadow-[24px_24px_0px_#071a3a]"
             />
-          </svg>
+            
+            {/* Floating blocks */}
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: [0, -15, 0] }}
+              transition={{ 
+                opacity: { duration: 0.5, delay: 0.5 },
+                y: { repeat: Infinity, duration: 4, ease: "easeInOut" }
+              }}
+              className="absolute top-8 right-8 w-48 h-48 bg-brand-blue border-4 border-brand-navy shadow-[12px_12px_0px_#071a3a] flex flex-col items-center justify-center text-white"
+            >
+              <Home className="w-16 h-16 mb-4" strokeWidth={1.5} />
+              <span className="font-bold text-lg tracking-wider">MORTGAGE</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: [0, 15, 0] }}
+              transition={{ 
+                opacity: { duration: 0.5, delay: 0.7 },
+                y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }
+              }}
+              className="absolute bottom-16 left-12 w-44 h-44 bg-white border-4 border-brand-navy shadow-[12px_12px_0px_#071a3a] flex flex-col items-center justify-center text-brand-navy"
+            >
+              <Briefcase className="w-12 h-12 mb-3 text-brand-blue" strokeWidth={1.5} />
+              <span className="font-bold text-sm tracking-wider">BUSINESS</span>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 0.9 }}
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#e8c45a] border-4 border-brand-navy shadow-[12px_12px_0px_#071a3a] flex items-center justify-center z-20"
+            >
+              <TrendingUp className="w-16 h-16 text-brand-navy" strokeWidth={2} />
+            </motion.div>
+          </div>
+          
         </div>
+
+        {/* Stats Strip */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              whileHover={{ y: -4, boxShadow: "var(--shadow-solid-sm)" }}
+              className="bg-white border-2 border-brand-navy p-6 shadow-[var(--shadow-solid-sm)] text-center transition-transform"
+            >
+              <p className="text-3xl lg:text-4xl font-bold text-brand-blue mb-1">{stat.value}</p>
+              <p className="text-brand-text-light font-bold text-sm tracking-wider uppercase">{stat.label}</p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

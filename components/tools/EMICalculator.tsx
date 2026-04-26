@@ -17,9 +17,9 @@ EMI ≈ ₹21,247`;
 
 export default function EMICalculator() {
   const [values, setValues] = useState({
-    principal: "",
-    rate: "",
-    tenure: "",
+    principal: "2500000",
+    rate: "9.5",
+    tenure: "60",
   });
 
   const handleChange = useCallback(
@@ -49,15 +49,20 @@ export default function EMICalculator() {
       : 0;
 
   return (
-    <div className="grid md:grid-cols-2 gap-8">
-      {/* Inputs */}
-      <div className="space-y-5">
+    <div className="space-y-8">
+      <div className="border-b border-gray-100 pb-4 mb-6">
+        <h3 className="text-2xl font-bold text-brand-navy">EMI Calculator</h3>
+        <p className="text-gray-500 font-medium text-sm mt-1">Estimate your monthly loan repayments instantly.</p>
+      </div>
+      <div className="grid md:grid-cols-2 gap-8 items-start">
+        {/* Inputs Section */}
+        <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-brand-navy mb-2">
             Loan Amount (₹)
           </label>
           <div className="relative">
-            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-brand-text-light">
               ₹
             </span>
             <input
@@ -65,18 +70,21 @@ export default function EMICalculator() {
               name="principal"
               value={values.principal}
               onChange={handleChange}
-              placeholder="e.g. 1000000"
-              className="w-full pl-8 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+              placeholder="e.g. 2500000"
+              className="w-full pl-10 pr-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
               inputMode="decimal"
             />
           </div>
           {principal > 0 && (
-            <p className="text-xs text-gray-400 mt-1">{formatINRLabel(principal)}</p>
+            <div className="flex justify-between items-center mt-2">
+              <p className="text-xs font-medium text-[#1b5e20]">{formatINRLabel(principal)}</p>
+              <p className="text-xs text-gray-400 font-medium">₹1L - ₹10Cr</p>
+            </div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-brand-navy mb-2">
             Annual Interest Rate (%)
           </label>
           <div className="relative">
@@ -85,115 +93,122 @@ export default function EMICalculator() {
               name="rate"
               value={values.rate}
               onChange={handleChange}
-              placeholder="e.g. 10.5"
-              className="w-full pl-4 pr-8 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
+              placeholder="e.g. 9.5"
+              className="w-full pl-4 pr-10 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
               inputMode="decimal"
             />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 font-medium">
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-light">
               %
             </span>
+          </div>
+          <div className="flex justify-between items-center mt-2">
+            <p className="text-xs text-gray-400 font-medium">5% - 20%</p>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          <label className="block text-sm font-medium text-brand-navy mb-2">
             Loan Tenure (Months)
           </label>
-          <input
-            type="text"
-            name="tenure"
-            value={values.tenure}
-            onChange={handleChange}
-            placeholder="e.g. 60 (5 years)"
-            className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-gray-800 bg-white"
-            inputMode="decimal"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              name="tenure"
+              value={values.tenure}
+              onChange={handleChange}
+              placeholder="e.g. 60"
+              className="w-full px-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              inputMode="decimal"
+            />
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-light text-sm">
+              Months
+            </span>
+          </div>
           {tenure > 0 && (
-            <p className="text-xs text-gray-400 mt-1">
-              {Math.floor(tenure / 12)} year{Math.floor(tenure / 12) !== 1 ? "s" : ""}{" "}
-              {tenure % 12 > 0 ? `${tenure % 12} months` : ""}
-            </p>
+            <div className="flex justify-between items-center mt-2">
+              <p className="text-xs font-medium text-[#1b5e20]">
+                {Math.floor(tenure / 12)} year{Math.floor(tenure / 12) !== 1 ? "s" : ""}{" "}
+                {tenure % 12 > 0 ? `${tenure % 12} months` : ""}
+              </p>
+              <p className="text-xs text-gray-400 font-medium">1 - 360 Months</p>
+            </div>
           )}
         </div>
 
         {/* Formula Help */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 pt-4">
           <Tooltip content={EMI_FORMULA}>
-            <button className="flex items-center gap-1.5 text-blue-600 text-sm hover:text-blue-800 transition-colors">
-              <span className="text-base">ℹ️</span>
+            <button className="flex items-center gap-1.5 text-[#1b5e20] font-medium text-sm hover:underline">
+              <span className="text-xs bg-[#1b5e20] text-white rounded-full w-4 h-4 flex items-center justify-center">ℹ</span>
               How is EMI calculated?
             </button>
           </Tooltip>
         </div>
       </div>
 
-      {/* Results */}
-      <div>
+      {/* Results Section - Navy Split */}
+      <div className="h-full">
         {hasResult ? (
-          <div className="space-y-4">
-            {/* Monthly EMI — primary result */}
-            <div className="bg-gradient-to-br from-[#0f2d5a] to-[#1e4d8c] rounded-2xl p-6 text-center text-white">
-              <p className="text-blue-200 text-sm mb-1">Monthly EMI</p>
-              <p className="text-4xl font-bold text-white">
+          <div className="bg-brand-navy rounded-2xl p-8 text-white shadow-[var(--shadow-solid-sm)] h-full flex flex-col justify-center">
+            
+            <div className="mb-8">
+              <p className="text-gray-300 font-medium text-sm mb-1">Your Monthly EMI</p>
+              <p className="text-4xl md:text-5xl font-bold text-white">
                 {formatINR(result.emi)}
               </p>
-              <p className="text-blue-200 text-xs mt-2">per month</p>
             </div>
 
-            {/* Breakdown */}
-            <div className="grid grid-cols-2 gap-3">
-              <div className="bg-green-50 border border-green-100 rounded-xl p-4 text-center">
-                <p className="text-xs text-green-600 mb-1">Principal</p>
-                <p className="text-lg font-bold text-green-700">
-                  {formatINRLabel(principal)}
+            <div className="space-y-6 mb-8">
+              <div>
+                <p className="text-gray-300 font-medium text-sm mb-1">Total Interest Payable</p>
+                <p className="text-2xl font-bold text-white">
+                  {formatINR(result.totalInterest)}
                 </p>
-                <p className="text-xs text-green-500">{principalPercent}%</p>
               </div>
-              <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 text-center">
-                <p className="text-xs text-orange-600 mb-1">Total Interest</p>
-                <p className="text-lg font-bold text-orange-700">
-                  {formatINRLabel(result.totalInterest)}
-                </p>
-                <p className="text-xs text-orange-500">{interestPercent}%</p>
-              </div>
-            </div>
 
-            <div className="bg-gray-50 border border-gray-100 rounded-xl p-4 flex justify-between items-center">
-              <span className="text-gray-600 text-sm font-medium">
-                Total Payable
-              </span>
-              <span className="text-gray-900 font-bold">
-                {formatINRLabel(result.totalPayable)}
-              </span>
+              <div>
+                <p className="text-gray-300 font-medium text-sm mb-1">Total Amount Payable</p>
+                <p className="text-2xl font-bold text-white">
+                  {formatINR(result.totalPayable)}
+                </p>
+              </div>
             </div>
 
             {/* Progress bar */}
-            <div>
-              <div className="flex justify-between text-xs text-gray-500 mb-1.5">
-                <span>Principal ({principalPercent}%)</span>
-                <span>Interest ({interestPercent}%)</span>
-              </div>
-              <div className="w-full h-3 bg-gray-100 rounded-full overflow-hidden flex">
+            <div className="mt-auto">
+              <div className="w-full h-3 bg-white/20 rounded-full flex overflow-hidden mb-3">
                 <div
-                  className="h-full bg-green-500 transition-all duration-500"
+                  className="h-full bg-[#4ade80] transition-all duration-500"
                   style={{ width: `${principalPercent}%` }}
                 />
                 <div
-                  className="h-full bg-orange-400 transition-all duration-500"
+                  className="h-full bg-[#f87171] transition-all duration-500"
                   style={{ width: `${interestPercent}%` }}
                 />
               </div>
+              <div className="flex justify-between text-xs font-medium">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#4ade80]" />
+                  <span className="text-gray-300">Principal: {principalPercent}%</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#f87171]" />
+                  <span className="text-gray-300">Interest: {interestPercent}%</span>
+                </div>
+              </div>
             </div>
+            
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center text-center py-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200">
-            <span className="text-4xl mb-3">🧮</span>
-            <p className="text-gray-500 text-sm">
+          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300">
+            <span className="text-5xl mb-4 grayscale opacity-50">🧮</span>
+            <p className="text-brand-navy font-medium">
               Enter loan details to see your EMI breakdown
             </p>
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

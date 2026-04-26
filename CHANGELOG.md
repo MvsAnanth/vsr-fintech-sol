@@ -1,4 +1,4 @@
-# Changelog — VSR Fintech Sol
+# Changelog — VSR Fintech Solutions
 
 All notable changes to this project are documented here.
 

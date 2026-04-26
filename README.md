@@ -1,4 +1,4 @@
-# VSR Fintech Sol - Financial Services Website
+# VSR Fintech Solutions - Financial Services Website
 
 > **Version:** 1.0.0  
 > **Managing Director:** Sukanya Vadagandla (B.Ed, MBA)  
@@ -9,7 +9,7 @@
 
 ## Overview
 
-VSR Fintech Sol is a high-performance, mobile-first, fully responsive single-page website for a financial services company. The site is designed to build trust instantly, clearly explain loan services, and drive WhatsApp conversions.
+VSR Fintech Solutions is a high-performance, mobile-first, fully responsive single-page website for a financial services company. The site is designed to build trust instantly, clearly explain loan services, and drive WhatsApp conversions.
 
 ---
 

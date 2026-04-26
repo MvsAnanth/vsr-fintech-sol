@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /Users/ananth/AnanthDev/antigravity_workspace/personal-assistant/.venv/lib/python*/site-packages/graphify*)",
+      "Bash(pip show:*)"
+    ]
+  }
+}
