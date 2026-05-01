@@ -50,15 +50,15 @@ export default function EMICalculator() {
 
   return (
     <div className="space-y-8">
-      <div className="border-b border-gray-100 pb-4 mb-6">
-        <h3 className="text-2xl font-bold text-brand-navy">EMI Calculator</h3>
-        <p className="text-gray-500 font-medium text-sm mt-1">Estimate your monthly loan repayments instantly.</p>
+      <div className="border-b border-brand-border pb-4 mb-6">
+        <h3 className="text-2xl font-bold text-brand-text">EMI Calculator</h3>
+        <p className="text-brand-text-light font-medium text-sm mt-1">Estimate your monthly loan repayments instantly.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Inputs Section */}
         <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-brand-navy mb-2">
+          <label className="block text-sm font-medium text-brand-text mb-2">
             Loan Amount (₹)
           </label>
           <div className="relative">
@@ -71,20 +71,20 @@ export default function EMICalculator() {
               value={values.principal}
               onChange={handleChange}
               placeholder="e.g. 2500000"
-              className="w-full pl-10 pr-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              className="w-full pl-10 pr-4 py-3 border-2 border-brand-border rounded-xl focus:outline-none focus:ring-0 focus:border-brand-blue text-brand-text font-bold bg-brand-bg transition-colors"
               inputMode="decimal"
             />
           </div>
           {principal > 0 && (
             <div className="flex justify-between items-center mt-2">
-              <p className="text-xs font-medium text-[#1b5e20]">{formatINRLabel(principal)}</p>
-              <p className="text-xs text-gray-400 font-medium">₹1L - ₹10Cr</p>
+              <p className="text-xs font-medium text-brand-blue">{formatINRLabel(principal)}</p>
+              <p className="text-xs text-brand-text-light font-medium">₹1L - ₹10Cr</p>
             </div>
           )}
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-brand-navy mb-2">
+          <label className="block text-sm font-medium text-brand-text mb-2">
             Annual Interest Rate (%)
           </label>
           <div className="relative">
@@ -94,7 +94,7 @@ export default function EMICalculator() {
               value={values.rate}
               onChange={handleChange}
               placeholder="e.g. 9.5"
-              className="w-full pl-4 pr-10 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              className="w-full pl-4 pr-10 py-3 border-2 border-brand-border rounded-xl focus:outline-none focus:ring-0 focus:border-brand-blue text-brand-text font-bold bg-brand-bg transition-colors"
               inputMode="decimal"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-light">
@@ -102,12 +102,12 @@ export default function EMICalculator() {
             </span>
           </div>
           <div className="flex justify-between items-center mt-2">
-            <p className="text-xs text-gray-400 font-medium">5% - 20%</p>
+            <p className="text-xs text-brand-text-light font-medium">5% - 20%</p>
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-brand-navy mb-2">
+          <label className="block text-sm font-medium text-brand-text mb-2">
             Loan Tenure (Months)
           </label>
           <div className="relative">
@@ -117,7 +117,7 @@ export default function EMICalculator() {
               value={values.tenure}
               onChange={handleChange}
               placeholder="e.g. 60"
-              className="w-full px-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              className="w-full px-4 py-3 border-2 border-brand-border rounded-xl focus:outline-none focus:ring-0 focus:border-brand-blue text-brand-text font-bold bg-brand-bg transition-colors"
               inputMode="decimal"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-light text-sm">
@@ -126,11 +126,11 @@ export default function EMICalculator() {
           </div>
           {tenure > 0 && (
             <div className="flex justify-between items-center mt-2">
-              <p className="text-xs font-medium text-[#1b5e20]">
+              <p className="text-xs font-medium text-brand-blue">
                 {Math.floor(tenure / 12)} year{Math.floor(tenure / 12) !== 1 ? "s" : ""}{" "}
                 {tenure % 12 > 0 ? `${tenure % 12} months` : ""}
               </p>
-              <p className="text-xs text-gray-400 font-medium">1 - 360 Months</p>
+              <p className="text-xs text-brand-text-light font-medium">1 - 360 Months</p>
             </div>
           )}
         </div>
@@ -138,19 +138,19 @@ export default function EMICalculator() {
         {/* Formula Help */}
         <div className="flex items-center gap-2 pt-4">
           <Tooltip content={EMI_FORMULA}>
-            <button className="flex items-center gap-1.5 text-[#1b5e20] font-medium text-sm hover:underline">
-              <span className="text-xs bg-[#1b5e20] text-white rounded-full w-4 h-4 flex items-center justify-center">ℹ</span>
+            <button className="flex items-center gap-1.5 text-brand-blue font-medium text-sm hover:underline">
+              <span className="text-xs bg-brand-blue text-white rounded-full w-4 h-4 flex items-center justify-center">ℹ</span>
               How is EMI calculated?
             </button>
           </Tooltip>
         </div>
       </div>
 
-      {/* Results Section - Navy Split */}
+      {/* Results Section */}
       <div className="h-full">
         {hasResult ? (
           <div className="bg-brand-navy rounded-2xl p-8 text-white shadow-[var(--shadow-solid-sm)] h-full flex flex-col justify-center">
-            
+
             <div className="mb-8">
               <p className="text-gray-300 font-medium text-sm mb-1">Your Monthly EMI</p>
               <p className="text-4xl md:text-5xl font-bold text-white">
@@ -197,12 +197,12 @@ export default function EMICalculator() {
                 </div>
               </div>
             </div>
-            
+
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300">
+          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-brand-bg rounded-2xl border-2 border-dashed border-brand-border">
             <span className="text-5xl mb-4 grayscale opacity-50">🧮</span>
-            <p className="text-brand-navy font-medium">
+            <p className="text-brand-text font-medium">
               Enter loan details to see your EMI breakdown
             </p>
           </div>

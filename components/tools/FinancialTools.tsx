@@ -17,14 +17,14 @@ export default function FinancialTools() {
   const [activeTab, setActiveTab] = useState<TabId>("emi");
 
   return (
-    <section id="tools" className="py-20 bg-[#f8f9fa] border-y-2 border-brand-navy">
+    <section id="tools" className="py-20 bg-brand-bg border-y-2 border-brand-border">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="bg-white border-2 border-brand-navy px-4 py-1.5 font-bold text-xs uppercase tracking-wider text-brand-navy shadow-[var(--shadow-solid-sm)] rounded-full">
+          <span className="bg-brand-surface border-2 border-brand-border px-4 py-1.5 font-bold text-xs uppercase tracking-wider text-brand-text shadow-[var(--shadow-solid-sm)] rounded-full">
             Free Financial Tools
           </span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-brand-navy mt-6 mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-brand-text mt-6 mb-4">
             Plan Your Finances Smartly
           </h2>
           <p className="text-brand-text-light max-w-xl mx-auto font-medium">
@@ -33,16 +33,16 @@ export default function FinancialTools() {
           </p>
         </div>
 
-        {/* Tab Navigation - Segmented Control Style */}
-        <div className="flex flex-col sm:flex-row bg-white border-2 border-brand-navy p-1.5 mb-8 rounded-2xl shadow-[var(--shadow-solid-sm)] max-w-3xl mx-auto">
+        {/* Tab Navigation */}
+        <div className="flex flex-col sm:flex-row bg-brand-surface border-2 border-brand-border p-1.5 mb-8 rounded-2xl shadow-[var(--shadow-solid-sm)] max-w-3xl mx-auto">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as TabId)}
               className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 text-xs font-bold transition-all uppercase tracking-wider rounded-xl ${
                 activeTab === tab.id
-                  ? "bg-brand-navy text-white shadow-md"
-                  : "bg-transparent text-brand-navy hover:bg-gray-100"
+                  ? "bg-brand-blue text-white shadow-md"
+                  : "bg-transparent text-brand-text hover:bg-brand-bg"
               }`}
             >
               <span className="text-lg">{tab.icon}</span>
@@ -52,7 +52,7 @@ export default function FinancialTools() {
         </div>
 
         {/* Tab Content */}
-        <div className="bg-white border-2 border-brand-navy rounded-2xl shadow-[var(--shadow-solid-md)] p-6 sm:p-8">
+        <div className="bg-brand-surface border-2 border-brand-border rounded-2xl shadow-[var(--shadow-solid-md)] p-6 sm:p-8">
           {activeTab === "emi" && <EMICalculator />}
           {activeTab === "eligibility" && <LoanEligibility />}
           {activeTab === "cibil" && <CIBILSection />}

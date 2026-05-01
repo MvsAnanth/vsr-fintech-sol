@@ -50,15 +50,15 @@ export default function LoanEligibility() {
 
   return (
     <div className="space-y-8">
-      <div className="border-b border-gray-100 pb-4 mb-6">
-        <h3 className="text-2xl font-bold text-brand-navy">Loan Eligibility Calculator</h3>
-        <p className="text-gray-500 font-medium text-sm mt-1">Check how much loan you can comfortably afford.</p>
+      <div className="border-b border-brand-border pb-4 mb-6">
+        <h3 className="text-2xl font-bold text-brand-text">Loan Eligibility Calculator</h3>
+        <p className="text-brand-text-light font-medium text-sm mt-1">Check how much loan you can comfortably afford.</p>
       </div>
       <div className="grid md:grid-cols-2 gap-8 items-start">
         {/* Inputs Section */}
         <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-brand-navy mb-2">
+          <label className="block text-sm font-medium text-brand-text mb-2">
             Monthly Net Income (₹)
           </label>
           <div className="relative">
@@ -71,7 +71,7 @@ export default function LoanEligibility() {
               value={values.income}
               onChange={handleChange}
               placeholder="e.g. 50000"
-              className="w-full pl-10 pr-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              className="w-full pl-10 pr-4 py-3 border-2 border-brand-border rounded-xl focus:outline-none focus:ring-0 focus:border-brand-blue text-brand-text font-bold bg-brand-bg transition-colors"
               inputMode="decimal"
             />
           </div>
@@ -85,7 +85,7 @@ export default function LoanEligibility() {
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-brand-navy mb-2">
+          <label className="block text-sm font-medium text-brand-text mb-2">
             Existing EMIs per Month (₹)
           </label>
           <div className="relative">
@@ -98,14 +98,14 @@ export default function LoanEligibility() {
               value={values.existingEMI}
               onChange={handleChange}
               placeholder="0 if none"
-              className="w-full pl-10 pr-4 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              className="w-full pl-10 pr-4 py-3 border-2 border-brand-border rounded-xl focus:outline-none focus:ring-0 focus:border-brand-blue text-brand-text font-bold bg-brand-bg transition-colors"
               inputMode="decimal"
             />
           </div>
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-brand-navy mb-2">
+          <label className="block text-sm font-medium text-brand-text mb-2">
             Expected Interest Rate (%)
           </label>
           <div className="relative">
@@ -115,7 +115,7 @@ export default function LoanEligibility() {
               value={values.rate}
               onChange={handleChange}
               placeholder="e.g. 10.5"
-              className="w-full pl-4 pr-10 py-3 border-2 border-brand-navy/20 rounded-xl focus:outline-none focus:ring-0 focus:border-[#1b5e20] text-brand-navy font-bold bg-white transition-colors"
+              className="w-full pl-4 pr-10 py-3 border-2 border-brand-border rounded-xl focus:outline-none focus:ring-0 focus:border-brand-blue text-brand-text font-bold bg-brand-bg transition-colors"
               inputMode="decimal"
             />
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-brand-text-light">
@@ -127,19 +127,19 @@ export default function LoanEligibility() {
         {/* EMI Burden Indicator */}
         {income > 0 && (
           <div className="pt-2">
-            <div className="flex justify-between text-xs font-medium text-brand-navy mb-2">
+            <div className="flex justify-between text-xs font-medium text-brand-text mb-2">
               <span>Current EMI Burden</span>
               <span
                 className={
                   Number(utilizationPercent) > 50
                     ? "text-[#f87171] font-bold"
-                    : "text-[#1b5e20] font-bold"
+                    : "text-brand-blue font-bold"
                 }
               >
                 {utilizationPercent}% of budget
               </span>
             </div>
-            <div className="w-full h-3 bg-gray-200 rounded-full flex overflow-hidden">
+            <div className="w-full h-3 bg-brand-border rounded-full flex overflow-hidden">
               <div
                 className={`h-full transition-all duration-500 ${
                   Number(utilizationPercent) > 50 ? "bg-[#f87171]" : "bg-[#4ade80]"
@@ -147,7 +147,7 @@ export default function LoanEligibility() {
                 style={{ width: `${Math.min(Number(utilizationPercent), 100)}%` }}
               />
             </div>
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-brand-text-light mt-2">
               {Number(utilizationPercent) > 50
                 ? "High EMI burden — may affect eligibility"
                 : "Healthy EMI-to-income ratio"}
@@ -158,21 +158,21 @@ export default function LoanEligibility() {
         {/* Formula Help */}
         <div className="flex items-center gap-2 pt-4">
           <Tooltip content={ELIGIBILITY_FORMULA}>
-            <button className="flex items-center gap-1.5 text-[#1b5e20] font-medium text-sm hover:underline">
-              <span className="text-xs bg-[#1b5e20] text-white rounded-full w-4 h-4 flex items-center justify-center">ℹ</span>
+            <button className="flex items-center gap-1.5 text-brand-blue font-medium text-sm hover:underline">
+              <span className="text-xs bg-brand-blue text-white rounded-full w-4 h-4 flex items-center justify-center">ℹ</span>
               How is eligibility calculated?
             </button>
           </Tooltip>
         </div>
       </div>
 
-      {/* Results Section - Navy Split */}
+      {/* Results Section */}
       <div className="h-full">
         {hasResult && result.eligibleEMI > 0 ? (
           <div className="bg-brand-navy rounded-2xl p-8 text-white shadow-[var(--shadow-solid-sm)] h-full flex flex-col">
-            
+
             <div className="mb-8 text-center sm:text-left">
-              <p className="text-[#4ade80] font-medium text-sm mb-1 uppercase tracking-wider">
+              <p className="text-brand-blue font-medium text-sm mb-1 uppercase tracking-wider">
                 Estimated Loan Eligibility
               </p>
               <p className="text-4xl md:text-5xl font-bold text-white mb-2">
@@ -211,7 +211,7 @@ export default function LoanEligibility() {
               </div>
             </div>
 
-            <div className="mt-auto bg-[#fff3cd] text-[#856404] rounded-xl p-4 flex gap-3 items-start">
+            <div className="mt-auto bg-brand-surface text-brand-text-light rounded-xl p-4 flex gap-3 items-start border border-brand-border">
               <span className="text-lg leading-none">💡</span>
               <p className="text-xs font-medium leading-relaxed">
                 This is an estimate. Actual eligibility depends on CIBIL score,
@@ -219,10 +219,10 @@ export default function LoanEligibility() {
                 assessment.
               </p>
             </div>
-            
+
           </div>
         ) : hasResult && result.eligibleEMI <= 0 ? (
-          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-red-50 rounded-2xl border-2 border-dashed border-red-200 text-[#b71c1c]">
+          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-[#2e1a1a] rounded-2xl border-2 border-dashed border-brand-border text-[#f87171]">
             <span className="text-5xl mb-4 opacity-80">⚠</span>
             <p className="font-bold text-lg mb-2">
               EMI Burden Too High
@@ -233,9 +233,9 @@ export default function LoanEligibility() {
             </p>
           </div>
         ) : (
-          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300">
+          <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-brand-bg rounded-2xl border-2 border-dashed border-brand-border">
             <span className="text-5xl mb-4 grayscale opacity-50">📊</span>
-            <p className="text-brand-navy font-medium">
+            <p className="text-brand-text font-medium">
               Enter your income details to check eligibility
             </p>
           </div>

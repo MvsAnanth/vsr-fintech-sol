@@ -1,33 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #004ac6;
-  --color-brand-blue-hover: #003ea8;
-  --color-brand-navy: #071a3a;
-  --color-brand-text: #191c1e;
-  --color-brand-text-light: #434655;
-  --color-brand-bg: #f7f9fb;
-  --color-brand-surface: #ffffff;
-  --color-brand-border: #e0e3e5;
-  
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-heading: 'Lexend', system-ui, sans-serif;
-  
-  --shadow-solid-sm: 2px 2px 0px rgba(0, 0, 0, 0.8);
-  --shadow-solid-md: 4px 4px 0px rgba(0, 0, 0, 0.8);
-  --shadow-solid-lg: 8px 8px 0px rgba(0, 0, 0, 0.8);
-  --shadow-solid-blue: 4px 4px 0px #004ac6;
+  /* ── Midnight Copper palette ── */
+  --color-brand-blue:        #c8723e;   /* burnished copper  (CTA, accents) */
+  --color-brand-blue-hover:  #b5622f;   /* darker copper     (hover state)  */
+  --color-brand-navy:        #171130;   /* deep indigo       (surfaces, nav) */
+  --color-brand-text:        #f4ece0;   /* warm pearl        (all body text) */
+  --color-brand-text-light:  #c4aed8;   /* lavender mist     (secondary txt) */
+  --color-brand-bg:          #0c091e;   /* void indigo       (page bg)       */
+  --color-brand-surface:     #1c1640;   /* raised surface    (cards, panels) */
+  --color-brand-border:      #2e2260;   /* steel border      (dividers)      */
+
+  --font-sans:    'Outfit', system-ui, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+
+  /* Copper-tinted shadows — distinctive, not generic black */
+  --shadow-solid-sm:   2px 2px 0px rgba(200, 114, 62, 0.50);
+  --shadow-solid-md:   4px 4px 0px rgba(200, 114, 62, 0.50);
+  --shadow-solid-lg:   8px 8px 0px rgba(200, 114, 62, 0.50);
+  --shadow-solid-blue: 4px 4px 0px #c8723e;
 }
 
 :root {
-  --background: #f7f9fb;
-  --foreground: #191c1e;
+  --background: #0c091e;
+  --foreground: #f4ece0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--background);
@@ -43,13 +43,13 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: #f0f2f5; }
-::-webkit-scrollbar-thumb { background: #c3c6d7; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #004ac6; }
+::-webkit-scrollbar-track { background: #171130; }
+::-webkit-scrollbar-thumb { background: #c8723e; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #e89560; }
 
-/* Focus */
+/* Focus ring — copper */
 *:focus-visible {
-  outline: 2px solid #004ac6;
+  outline: 2px solid #c8723e;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -58,15 +58,10 @@ h1, h2, h3, h4, h5, h6 {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-in-up {
-  animation: fadeInUp 0.55s ease-out forwards;
-}
+.animate-fade-in-up { animation: fadeInUp 0.55s ease-out forwards; }
 .animation-delay-200 { animation-delay: 200ms; }
 
-/* Shared section bg */
 section {
   background: var(--background);
   color: var(--foreground);
 }
-
-
